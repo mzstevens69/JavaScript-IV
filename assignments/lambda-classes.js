@@ -31,10 +31,23 @@ class Instructor extends Person {
     grade(student, subject) {
         return (`${student.name} receives a perfect score on ${subject}`);
     }//closes grade
-    stdsGrade(student) {
-        let addSubtract = Math.Random();
+    //Math.floor(Math.random()*10) 
+    giveGrade(student) {
+       let plusMinusGrade = Math.random();
 
-    }
+        if(plusMinusGrade > 0.5) {
+            student.grade += Math.floor(Math.random() * Math.random() * 10);
+                return `Points added to ${student.name}! Current Grade: ${student.grade}`;
+        }// closes if statement
+        else { 
+            student.grade -= Math.floor(Math.random() * Math.random() * 10);
+              return `Points subtracted from ${student.name}! Current grade: ${student.grade}`;
+        }
+    }//closes give grade
+
+
+
+    
 }//closes Instructor class
 //////student class/////////////
 
@@ -45,7 +58,7 @@ class Student extends Person {
         this.previousBackground = stdsAttrs.previousBackground,
         this.className = stdsAttrs.className,
         this.favSubjects = stdsAttrs.favSubjects,
-        this.grade = stdsAttrs.grade = 95
+        this.grade = stdsAttrs.grade
     }//closes constructor
     listSubjects() {
         this.favSubjects.map(subj => console.log(subj));
@@ -121,4 +134,5 @@ const geralt = new TeamLeader({
     gradClassName: 'FSW3',
     favInstructor: 'Britt'
 });
- console.log()
+console.log(brit.grade(lola, 'User Interface'));
+console.log(brit.giveGrade(lola));
