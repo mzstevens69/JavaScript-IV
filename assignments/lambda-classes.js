@@ -26,10 +26,10 @@ class Instructor extends Person {
         this.catchPhrase = iProps.catchPhrase
     }//closes
     demo(subject) {
-        return (`${student.name} receives a perfect score on ${subject}`);
+        return (`${student.name} loves to talk about this ${subject}`);
     }//closes demo
     grade(student, subject) {
-        return (`${student.name} receives a perfect score on ${subject}`);
+        return (`${student.name} receives a perfect score on ${subject} 😇`);
     }//closes grade
     //Math.floor(Math.random()*10) 
     giveGrade(student) {
@@ -37,11 +37,11 @@ class Instructor extends Person {
 
         if(plusMinusGrade > 0.5) {
             student.grade += Math.floor(Math.random() * Math.random() * 10);
-                return `Points added to ${student.name}! Current Grade: ${student.grade}`;
+                return `Points added to ${student.name} 😇! Current Grade: ${student.grade}`;
         }// closes if statement
         else { 
             student.grade -= Math.floor(Math.random() * Math.random() * 10);
-              return `Points subtracted from ${student.name}! Current grade: ${student.grade}`;
+              return `Points subtracted from ${student.name} 🤐! Current grade: ${student.grade}`;
         }
     }//closes give grade
 
@@ -69,7 +69,18 @@ class Student extends Person {
     sprintChallenge() {
         return (`${student.name} has begun sprint challenge on ${subject}`);
     }
+    graduate() {
+        return (this.grade < 70 ? "You must flex ~_~ Then try again" : "You Graduated!!!");
+    }
 }//closes student
+// bool y = (x == 42) ? true : false;
+
+/*This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
+
+If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score. */
+
+
+///////Team Leader //////////////////////
 class TeamLeader extends Instructor {
     constructor(tlProps) {
         super(tlProps);
@@ -83,8 +94,8 @@ class TeamLeader extends Instructor {
         return `${this.name} debugs ${student.name}'s code on ${subject}`;
     }
 }
-const lola = new Student ({
-    name: 'Lola Stevens',
+const cindy = new Student ({
+    name: 'Cindy Stevens',
     location: 'Portland, TN',
     age: 21,
     gender: 'F',
@@ -132,7 +143,8 @@ const geralt = new TeamLeader({
     favLanguage: 'Birdish',
     catchPhrase: 'None',
     gradClassName: 'FSW3',
-    favInstructor: 'Britt'
+    favInstructor: 'Rick'
 });
-console.log(brit.grade(lola, 'User Interface'));
-console.log(brit.giveGrade(lola));
+console.log(brit.grade(cindy, 'User Interface'));
+console.log(brit.giveGrade(cindy));
+console.log(cindy.graduate());
